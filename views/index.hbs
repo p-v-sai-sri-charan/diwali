@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Diwali</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Condiment&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #6741ae url(bg.png);
+            background-size: cover;
+        }
+
+        section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        section img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+
+        .name {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-top: 70vh;
+            margin-left: 40vw;
+        }
+
+        .nameh {
+            font-weight: 300;
+            font-size: 100px;
+            font-family: 'Condiment', cursive;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="light">
+            <img src="light.png">
+        </div>
+        <img src="diya1.png" class="layer" data-speed="-6">
+        <img src="diya2.png" class="layer" data-speed="10">
+        <img src="diya3.png" class="layer" data-speed="6">
+        <img src="text1.png" class="layer" data-speed="-8">
+        <h1 style="color: aliceblue;" class="layer">SAi Charan</h1>
+        <img src="text2.png" class="layer">
+        <div class="name layer">
+            <h1 class="nameh">--- </h1>
+        </div>
+    </section>
+    <br>
+    <form action="/dates" method="POST" style="text-align: center">
+        <label for="bookingStart">Start at:</label>
+        <input type="datetime-local" id="bookingStart" name="bookingStart" min="" max="" required>
+        <label for="bookingEnd">End at:</label>
+        <input type="datetime-local" id="bookingEnd" name="bookingEnd" required>
+        <label for="city">City:</label>
+        <select class="selectpicker" data-style="btn-info" name="selectpicker" required>
+            <optgroup label="Select Table">
+                <option name="Hyderabad" value="Hyderabad">Hyderabad</option>
+                <option name="Bangalore" value="Bangalore">Bangalore</option>
+
+            </optgroup>
+        </select>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script type="text/javascript">
+        document.addEventListener("mousemove", parallax);
+        function parallax(e) {
+            this.querySelectorAll('.layer').forEach(Layer => {
+                const speed = Layer.getAttribute('data-speed')
+                const x = (window.innerWidth - e.pageX * speed) / 100
+                const y = (window.innerWidth - e.pageY * speed) / 100
+                Layer.style.transform = `translate(${x}px) translate(${y}px)`
+            })
+        }
+    </script>
+</body>
+
+</html>
